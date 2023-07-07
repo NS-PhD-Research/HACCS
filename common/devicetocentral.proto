@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+service DeviceToCentral {
+    rpc RegisterToCentral(DeviceInfo) returns (RegStatus) {}
+    rpc HeartBeat(Ping) returns (Pong) {}
+    rpc SendSummary(DeviceSummary) returns (SummaryAck) {}
+}
+
+message DeviceInfo {
+    string ip = 1;
+    int32 flport = 2;
+}
+
+message RegStatus {
+    bool success = 1;
+    string id = 2;
+}
+
+message Ping {
+    float cpu_usage = 1;
+    int32 ncpus = 2;
+    float load15 = 3;
+    float virtual_mem = 4;
+    float battery = 5;
+    string id = 6;
+}
+
+message Pong {
+    bool ack = 1;
+}
+
+message DeviceSummary {
+    string id = 1;
+    string type = 2;
+    string summary = 3;
+}
+
+message SummaryAck {
+    bool ack = 1;
+}

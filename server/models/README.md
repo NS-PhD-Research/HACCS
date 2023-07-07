@@ -1,0 +1,1 @@
+NN model config taken from https://github.com/icpm/pytorch-cifar10/tree/master/models
